@@ -1,39 +1,5 @@
 "use strict";
 
-// (function () {
-//   /**
-//    * This method loads the Header and the Page Content
-//    *
-//    */
-//   function LoadHeader(): void {
-//     console.log("Loading Header...");
-//     $.get("./Views/components/header.html", function (html_data) {
-//       $("header").html(html_data);
-
-//       // Activate the Home Link on initial load
-//       $("li>a#Home").addClass("active");
-
-//       $("li>a").on("click", function (event) {
-//         event.preventDefault();
-//         // Change Title
-//         document.title = $(this).prop("id") as string;
-
-//         // Change URL
-//         history.pushState({}, "", "/" + document.title);
-
-//         // removes the active class from each list item
-//         $("li>a").each(function () {
-//           $(this).removeClass("active");
-//         });
-
-//         // Activate the current Link
-//         $("li>a#" + document.title).addClass("active");
-
-//         LoadContent();
-//       });
-//     });
-//   }
-
 //   /**
 //    * This method injects the Page Content
 //    */
@@ -79,15 +45,47 @@
 /*=============================================
     OBJECT WITH PROPERTIES
 =============================================*/
-var p = {};
+var p = {
+  navbarMenu: [
+    { name: "Home" },
+    { name: "About" },
+    { name: "Projects" },
+    { name: "Services" },
+    { name: "Contact" },
+  ],
+  homePage: {
+    text: "Hello I'm Andres Professional Front-End Developer",
+    image: "./../Assets/avatar.png",
+  },
+  aboutPage: {
+    text: "hola soy la pagina 2",
+    image: "otra imagen",
+  },
+};
 
 /*=============================================
     OBJECT WITH METHODS
 =============================================*/
 var m = {
+  //----------method to load Header
   loadHeader: () => {
     $.get("./Views/components/header.html", function (html_data) {
-      $("header").html(html_data);
+      let navbar = document.createElement("nav");
+      // adding bootstrap classes to the new element nav
+      navbar.classList.add("navbar", "navbar-expand-lg", "navbar-dark");
+      // adding the file obtained as child of the nav tag
+      navbar.innerHTML = html_data;
+
+      // loop the array in order to create the li elements
+      p.navbarMenu.map((item) => {
+        const li = `
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" id="${item.name}" href="#">${item.name}</a>
+                   </li>
+                  `;
+        $(navbar).find("ul").append(li);
+      });
+      $("header").html(navbar);
 
       // Activate the Home Link on initial load
       $("li>a#Home").addClass("active");
@@ -108,28 +106,41 @@ var m = {
         // Activate the current Link
         $("li>a#" + document.title).addClass("active");
 
-        // LoadContent();
+        m.loadContent();
       });
     });
-
-    m.loadContent();
   },
 
+  //----------method to load the conten on main
   loadContent: () => {
-    console.log("Loading Content...");
-   
     let contentLink = document.title.toLowerCase();
     $.get("./Views/content/" + contentLink + ".html", function (html_data) {
+      switch (contentLink as string) {
+        case "home":
+          console.log("ha");
+          break;
+
+        default:
+          break;
+      }
+
       $("main").html(html_data);
     });
-   
-    // let contentLink = document.title.toLowerCase();
-    // $.get("./Views/content/" + contentLink + ".html", function (html_data) {
-    //   $("main").html(html_data);
-    // });
+  },
+
+//----------method to load the footer
 
 
+  // First method of using functions
+  startApp: () => {
+    // initial load
+    document.title = "Home";
+    // Change URL
+    history.pushState({}, "", "/Home");
+    m.loadContent();
+    m.loadHeader();
+    // m.loadFooter();
   },
 };
 
-m.loadHeader();
+window.addEventListener("load", m.startApp);
