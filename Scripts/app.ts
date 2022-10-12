@@ -18,6 +18,8 @@ var data = {
   },
   aboutPage: {
     title: "About Me",
+    button: "Resume",
+    urlImage: "./../../Assets/img/me.jpg",
     paragraphs: [
       ` Hello, My name is Andres and I enjoy creating experiences
     and things on the Internet. <br> I'm a systems engineer
@@ -42,8 +44,7 @@ var data = {
     my career, which I am very grateful and motivated to
     continue growing professionally.`,
     ],
-    button: "Resume",
-    urlImage: "./../../Assets/img/me.jpg",
+
   },
 };
 
@@ -125,6 +126,7 @@ let m = {
 
           case "about":
             $("main #about h4").text(data.aboutPage.title);
+            $("main #about img").attr("src", data.aboutPage.urlImage);
 
             //loop the array with all the paragraphs
             data.aboutPage.paragraphs.map((item: string) => {
@@ -140,7 +142,6 @@ let m = {
 
             //add the button to the container paragraph
             $("main #about .paragraphs").append(buttonResume);
-
             break;
 
           default:
