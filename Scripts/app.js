@@ -17,8 +17,33 @@ var data = {
         text4: "I build things for the web.",
     },
     aboutPage: {
-        text: "hola soy la pagina 2",
-        image: "otra imagen",
+        title: "About Me",
+        paragraphs: [
+            ` Hello, My name is Andres and I enjoy creating experiences
+    and things on the Internet. <br> I'm a systems engineer
+    specializing in front-end development with more than 5 years
+    of experience in the market, dedicated to creating
+    beautiful interfaces for everything from simple open source
+    applications to complex proprietary systems.`,
+            ` I started in web programming because I consider myself a
+    person passionate about technology, since I was a child I
+    have always been fascinated by technological advances and
+    programming languages. I remember taking my first steps in
+    the world of development using some languages like AS400,
+    visual Basica and c++, and since then I have been at the
+    forefront of technology trying to learn more and more.`,
+            `   I had the opportunity to work for some companies such as
+    <a href="http://">Globant</a>, <a
+        href="https://conexcol.net.co/">Conexcol Cloud</a>,
+    <a href="https://www.bdo.ca/en-ca/home/">BDO Canada</a>, among
+    others,
+    using front-end development technologies for the use of some
+    web projects. Experiences that have contributed to forging
+    my career, which I am very grateful and motivated to
+    continue growing professionally.`,
+        ],
+        button: "Resume",
+        urlImage: "./../../Assets/img/me.jpg",
     },
 };
 /*=============================================
@@ -33,8 +58,9 @@ let m = {
         });
         //After 8S the first animation is stoped and removed ther opacity from the logo
         setTimeout(function () {
-            $(".bg-landing div").css("animation-play-state", "paused");
-            $(".bg-landing>div>div> img").addClass("bg-landing-opacity");
+            $("main .bg-landing div").css("animation-play-state", "paused");
+            $("main .bg-landing>div>div> img").addClass("bg-landing-opacity");
+            console.log("andres");
         }, 8000);
     },
     //----------method to load Header
@@ -83,6 +109,21 @@ let m = {
                     $("main #home h6").text(data.homePage.text4);
                     $("main #home h6").attr("data-text", data.homePage.text4); //attr needed for the effect
                     break;
+                case "about":
+                    $("main #about h4").text(data.aboutPage.title);
+                    //loop the array with all the paragraphs
+                    data.aboutPage.paragraphs.map((item) => {
+                        let ptag = `<p>${item}</p>`;
+                        $("#about").find(".paragraphs").append(ptag);
+                    });
+                    //create the button element
+                    let buttonResume = document.createElement("button");
+                    $(buttonResume).addClass("btn btn-outline-primary btn-sm");
+                    $(buttonResume).attr("type", "button");
+                    $(buttonResume).text(data.aboutPage.button);
+                    //add the button to the container paragraph
+                    $("main #about .paragraphs").append(buttonResume);
+                    break;
                 default:
                     break;
             }
@@ -100,7 +141,7 @@ let m = {
         m.loadContent();
         m.loadHeader();
         // m.loadFooter();
-        // }, 10000);  ////////////////////////////////////////------->descomentar
+        // }, 10500);  ////////////////////////////////////////------->descomentar
     },
 };
 window.addEventListener("load", m.startApp);

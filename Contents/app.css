@@ -1,10 +1,11 @@
 /* ************** General style **************/
 body {
-  background-color: #192226d4;
+  background-color: #192226e0;
   height: 90vh;
 }
 main {
   height: 92vh;
+  overflow-y: hidden;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -127,7 +128,7 @@ header nav {
   background: black;
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
-  animation: noise-anim 2s infinite linear alternate-reverse;
+  animation: noise-anim 2s infinit7e linear alternate-reverse;
 }
 
 #home .glitch:before {
@@ -275,10 +276,74 @@ header nav {
   }
 }
 
+/* ************** About style **************/
+
+#about img {
+  width: 80%;
+  border-radius: 5px;
+  filter: blur(1px);
+}
+
+#about img:hover {
+}
+#about {
+  color: #fff;
+}
+#about p {
+  color: #ffffffeb;
+  font-family: "Lato";
+  letter-spacing: 0.5px;
+  font-weight: 300;
+}
+
+#about p a {
+  color: #00d6ff;
+  text-decoration: none;
+}
+
+#about p a:hover {
+  color: #ee445f;
+  transition: all ease 0.5s;
+}
+
+#about button {
+  width: 200px;
+  align-self: center;
+  font-size: 14px;
+  font-family: "Lato";
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #00d6ff;
+  border-color: #00d6ff;
+  box-shadow: rgb(0 0 0 / 56%) 0px 22px 70px 4px;
+}
+
+#about button:hover {
+  color: #ee445f;
+  border-color: #ee445f;
+  background-color: transparent;
+}
+
+
+
+#about img {
+  box-shadow: blue 0px 0px 5px 8px inset, rgb(52 60 64) 31px 29px 2px -4px, rgb(0 214 255) 32px 30px, rgb(52 60 64) 4px -15px 0px -3px;
+  transition: all linear 0.3s;
+}
+
+#about img:hover {
+  box-shadow:blue 0px 0px 5px 8px inset, rgb(52 60 64) 15px 16px 2px -4px, rgb(238 68 95) 15px 15px, rgb(52 60 64) 4px -15px 0px -3px;
+  filter: blur(0px) !important;
+  transition: all linear 0.3s;
+}
+
 /*====================================================================================================
 Screen - Small (xs) - 480px or vertical 320px
 ====================================================================================================*/
 @media (max-width: 767px) {
+  main{
+    overflow-y: auto;
+  }
   #home-background {
     background-image: url(./../Assets/img/bgHome-small.jpg);
     background-size: cover;
@@ -296,4 +361,18 @@ Screen - Small (xs) - 480px or vertical 320px
   #home .glitch {
     text-align: center;
   }
+  #about .photo {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  #about img {
+    box-shadow: blue 0px 0px 5px 8px inset, rgb(52 60 64) 32px 12px 2px -4px, rgb(0 214 255) 32px 12px, rgb(52 60 64) 4px -15px 0px -3px;
+  }
+  
+  #about img:hover {
+    box-shadow: blue 0px 0px 5px 8px inset, rgb(52 60 64) 13px 9px 2px -4px, rgb(238 68 95) 13px 9px, rgb(52 60 64) 4px -15px 0px -3px;
+  }
+
+
 }
