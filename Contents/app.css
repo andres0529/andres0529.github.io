@@ -3,9 +3,13 @@ body {
   background-color: #192226e0;
   height: 90vh;
 }
-main {
-  height: 92vh;
+
+html{
+  height: 100vh;
   overflow-y: hidden;
+}
+main {
+  height: 100vh;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -341,7 +345,7 @@ header nav {
 Screen - Small (xs) - 480px or vertical 320px
 ====================================================================================================*/
 @media (max-width: 767px) {
-  main{
+  html{
     overflow-y: auto;
   }
   #home-background {

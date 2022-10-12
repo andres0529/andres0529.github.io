@@ -133,16 +133,17 @@ let m = {
     //----------method to load the footer
     // First method of using functions
     startApp: () => {
-        // m.loadLanding(); ////////////////////////////////////////------->descomentar
-        // setTimeout(function () {  ////////////////////////////////////////------->descomentar
-        // initial load
-        document.title = "Home";
-        // Change URL
-        history.pushState({}, "", "/Home");
-        m.loadContent();
-        m.loadHeader();
-        // m.loadFooter();
-        // }, 10500);  ////////////////////////////////////////------->descomentar
+        m.loadLanding(); ////////////////////////////////////////------->descomentar
+        console.log('andres');
+        setTimeout(function () {
+            // initial load
+            document.title = "Home";
+            // Change URL
+            history.pushState({}, "", "/Home");
+            m.loadContent();
+            m.loadHeader();
+            // m.loadFooter();
+        }, 10500); ////////////////////////////////////////------->descomentar
     },
 };
 window.addEventListener("load", m.startApp);

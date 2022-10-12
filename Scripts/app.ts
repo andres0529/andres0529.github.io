@@ -156,7 +156,7 @@ let m = {
   // First method of using functions
   startApp: () => {
     m.loadLanding(); ////////////////////////////////////////------->descomentar
-
+console.log('andres')
     setTimeout(function () {  ////////////////////////////////////////------->descomentar
     // initial load
     document.title = "Home";
