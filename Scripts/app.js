@@ -6,7 +6,7 @@ var data = {
     navbarMenu: [
         { name: "Home" },
         { name: "About" },
-        { name: "Projects" },
+        { name: "Experience" },
         { name: "Services" },
         { name: "Contact" },
     ],
@@ -125,6 +125,8 @@ let m = {
                     //add the button to the container paragraph
                     $("main #about .paragraphs").append(buttonResume);
                     break;
+                case "experience":
+                    break;
                 default:
                     break;
             }
@@ -133,17 +135,17 @@ let m = {
     //----------method to load the footer
     // First method of using functions
     startApp: () => {
-        m.loadLanding(); ////////////////////////////////////////------->descomentar
-        console.log('andres');
-        setTimeout(function () {
-            // initial load
-            document.title = "Home";
-            // Change URL
-            history.pushState({}, "", "/Home");
-            m.loadContent();
-            m.loadHeader();
-            // m.loadFooter();
-        }, 10500); ////////////////////////////////////////------->descomentar
+        // m.loadLanding(); ////////////////////////////////////////------->descomentar
+        console.log("andres");
+        // setTimeout(function () { ////////////////////////////////////////------->descomentar
+        // initial load
+        document.title = "Home";
+        // Change URL
+        history.pushState({}, "", "/Home");
+        m.loadContent();
+        m.loadHeader();
+        // m.loadFooter();
+        // }, 10500); ////////////////////////////////////////------->descomentar
     },
 };
 window.addEventListener("load", m.startApp);

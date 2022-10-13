@@ -6,7 +6,7 @@ var data = {
   navbarMenu: [
     { name: "Home" },
     { name: "About" },
-    { name: "Projects" },
+    { name: "Experience" },
     { name: "Services" },
     { name: "Contact" },
   ],
@@ -44,7 +44,6 @@ var data = {
     my career, which I am very grateful and motivated to
     continue growing professionally.`,
     ],
-
   },
 };
 
@@ -144,6 +143,10 @@ let m = {
             $("main #about .paragraphs").append(buttonResume);
             break;
 
+          case "experience":
+
+
+            break;
           default:
             break;
         }
@@ -155,17 +158,17 @@ let m = {
 
   // First method of using functions
   startApp: () => {
-    m.loadLanding(); ////////////////////////////////////////------->descomentar
-console.log('andres')
-    setTimeout(function () {  ////////////////////////////////////////------->descomentar
-    // initial load
-    document.title = "Home";
-    // Change URL
-    history.pushState({}, "", "/Home");
-    m.loadContent();
-    m.loadHeader();
-    // m.loadFooter();
-    }, 10500);  ////////////////////////////////////////------->descomentar
+    // m.loadLanding(); ////////////////////////////////////////------->descomentar
+    console.log("andres");
+    // setTimeout(function () { ////////////////////////////////////////------->descomentar
+      // initial load
+      document.title = "Home";
+      // Change URL
+      history.pushState({}, "", "/Home");
+      m.loadContent();
+      m.loadHeader();
+      // m.loadFooter();
+    // }, 10500); ////////////////////////////////////////------->descomentar
   },
 };
 
