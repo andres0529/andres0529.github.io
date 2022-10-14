@@ -85,6 +85,7 @@ var data = {
         text2: "I'm Andres Correa",
         text3: "Professional - FrontEnd Developer",
         text4: "I build things for the web.",
+        button: "Who I am",
     },
     aboutPage: {
         title: "About Me",
@@ -234,6 +235,16 @@ let m = {
                     $("main #home h5").text(data.homePage.text3);
                     $("main #home h6").text(data.homePage.text4);
                     $("main #home h6").attr("data-text", data.homePage.text4); //attr needed for the effect
+                    $("main #home span").html(`${data.homePage.button} <i class="fa-solid fa-angle-right"></i>`);
+                    //method for button "More"
+                    $("#home .btnMore").on("click", () => {
+                        document.title = "About";
+                        window.history.pushState({}, "", "About");
+                        // Activate the Home Link on initial load
+                        $("li>a#Home").removeClass("active");
+                        $("li>a#About").addClass("active");
+                        m.loadContent();
+                    });
                     break;
                 case "about":
                     $("main #about h4").text(data.titles.page2);
@@ -250,6 +261,7 @@ let m = {
                     $(buttonResume).text(data.aboutPage.button);
                     //add the button to the container paragraph
                     $("main #about .paragraphs").append(buttonResume);
+                    $("main #about button").on("click", () => location.href = "https://www.dropbox.com/s/at3djtjixix6lzk/AndresCorrea_Resume%20August-2022.pdf?dl=0");
                     break;
                 case "experience":
                     // variables for left part Experience
@@ -345,7 +357,6 @@ let m = {
     // First method of using functions
     startApp: () => {
         // m.loadLanding(); ////////////////////////////////////////------->descomentar
-        console.log("andres");
         // setTimeout(function () { ////////////////////////////////////////------->descomentar
         // initial load
         document.title = "Home";

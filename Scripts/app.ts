@@ -85,6 +85,7 @@ var data = {
     text2: "I'm Andres Correa",
     text3: "Professional - FrontEnd Developer",
     text4: "I build things for the web.",
+    button: "Who I am",
   },
   aboutPage: {
     title: "About Me",
@@ -249,6 +250,20 @@ let m = {
             $("main #home h5").text(data.homePage.text3);
             $("main #home h6").text(data.homePage.text4);
             $("main #home h6").attr("data-text", data.homePage.text4); //attr needed for the effect
+            $("main #home span").html(
+              `${data.homePage.button} <i class="fa-solid fa-angle-right"></i>`
+            );
+
+            //method for button "More"
+            $("#home .btnMore").on("click", () => {
+              document.title = "About";
+              window.history.pushState({}, "", "About");
+              // Activate the Home Link on initial load
+              $("li>a#Home").removeClass("active");
+              $("li>a#About").addClass("active");
+              m.loadContent();
+            });
+
             break;
 
           case "about":
@@ -269,6 +284,10 @@ let m = {
 
             //add the button to the container paragraph
             $("main #about .paragraphs").append(buttonResume);
+
+            $("main #about button").on("click", ()=> location.href ="https://www.dropbox.com/s/at3djtjixix6lzk/AndresCorrea_Resume%20August-2022.pdf?dl=0")
+
+
             break;
 
           case "experience":
@@ -281,8 +300,12 @@ let m = {
             let jobTasks = document.querySelector(".jobDescription ul");
             let joinedTasks = "";
             // variables for Right part Experience
-            let skillsContainer = document.querySelector(".skillsProjectsContainer .skills");
-            let projectsContainer = document.querySelector(".skillsProjectsContainer .projects");
+            let skillsContainer = document.querySelector(
+              ".skillsProjectsContainer .skills"
+            );
+            let projectsContainer = document.querySelector(
+              ".skillsProjectsContainer .projects"
+            );
             let joinedSkills = "";
             let joinedProjects = "";
 
@@ -345,7 +368,7 @@ let m = {
 
             $(".skillsProjectsContainer .titleSkills").text("Skills");
             $(".skillsProjectsContainer .titleProjects").text("Some Projects");
-              //populating skills side
+            //populating skills side
             data.skills.map((skill) => {
               joinedSkills += `<div>
                                     <figure>
@@ -357,7 +380,7 @@ let m = {
                                 </div>`;
             });
             skillsContainer.innerHTML = joinedSkills;
-              //populating projects side
+            //populating projects side
             data.projects.map((project) => {
               joinedProjects += `<div>
                                   <figure>
@@ -382,13 +405,14 @@ let m = {
   // First method of using functions
   startApp: () => {
     // m.loadLanding(); ////////////////////////////////////////------->descomentar
-    console.log("andres");
+
     // setTimeout(function () { ////////////////////////////////////////------->descomentar
     // initial load
     document.title = "Home";
     // Change URL
     history.pushState({}, "", "/Home");
     m.loadContent();
+
     m.loadHeader();
     // m.loadFooter();
     // }, 10500); ////////////////////////////////////////------->descomentar
