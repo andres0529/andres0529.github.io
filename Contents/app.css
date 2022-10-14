@@ -396,15 +396,19 @@ header nav {
   margin-left: 3rem;
 }
 
-#experience .skillsContainer figure {
+#experience .skillsProjectsContainer figure {
   width: 50px;
 }
 
-#experience .skillsContainer .skills {
+#experience .skillsProjectsContainer .skills,
+#experience .skillsProjectsContainer .projects
+{
   row-gap: 20px;
 }
 
-#experience .skillsContainer .skills div {
+#experience .skillsProjectsContainer .skills div,
+#experience .skillsProjectsContainer .projects div 
+{
   padding: 5px;
   margin-right: 7px;
   text-align: center;
@@ -414,7 +418,9 @@ header nav {
   align-items: center;
 }
 
-#experience .skillsContainer .skills span {
+#experience .skillsProjectsContainer .skills span,
+#experience .skillsProjectsContainer .projects span 
+{
   color: #ffffffeb;
   font-size: 12px;
   font-family: "Lato";
@@ -423,21 +429,39 @@ header nav {
   hyphens: auto;
 }
 
-.skillsContainer img {
+.skillsProjectsContainer img {
   width: 40px;
   height: 40px;
 }
 
-.skillsContainer img:hover {
-  width: 30px;
-  height: 30px;
-  transition: all ease 0.3s;
+#experience .skills-projects-bg div:first-child.skillsProjectsContainer div:nth-child(3) img {
+  -webkit-animation: spin 2s linear infinite;
+  animation: spinReact 3s linear infinite;
 }
 
 #experience .skills-projects-bg {
   background-color: #222b31;
   padding: 15px;
+  box-shadow: #222b31 24px 38px 0px 0px inset, rgb(52 60 64) 42px 36px 0px -23px, rgb(0 214 255) 41px 35px 0px -16px, rgb(52 60 64) 0px 28px 0px -8px
 }
+
+@-webkit-keyframes spinReact {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spinReact {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /*====================================================================================================
 Screen - Small (xs) - 480px or vertical 320px
 ====================================================================================================*/
@@ -535,9 +559,13 @@ Screen - Small (xs) - 480px or vertical 320px
     border-bottom: 3px solid !important;
   }
 
-  #experience .skillsContainer .skills {
+  #experience .skillsProjectsContainer .skills, 
+  #experience .skillsProjectsContainer .projects
+  {
     justify-content: space-between;
   }
 
-
+  #experience .skills-projects-bg{
+    box-shadow: none;
+  }
 }

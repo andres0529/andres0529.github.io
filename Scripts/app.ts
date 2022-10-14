@@ -10,6 +10,69 @@ var data = {
     page4: "",
     page5: "",
   },
+  skills: [
+    {
+      name: "HTML5",
+      urlImage: "./../../Assets/img/logos/html.svg",
+    },
+    {
+      name: "Javascript",
+      urlImage: "./../../Assets/img/logos/javascript.svg",
+    },
+    {
+      name: "ReactJS",
+      urlImage: "./../../Assets/img/logos/react.svg",
+    },
+    {
+      name: "Angular",
+      urlImage: "./../../Assets/img/logos/angular.svg",
+    },
+    {
+      name: "Redux",
+      urlImage: "./../../Assets/img/logos/redux.svg",
+    },
+    {
+      name: "NextJS",
+      urlImage: "./../../Assets/img/logos/next.svg",
+    },
+    {
+      name: "CSS",
+      urlImage: "./../../Assets/img/logos/css.svg",
+    },
+    {
+      name: "Bootstrap",
+      urlImage: "./../../Assets/img/logos/bootstrap.svg",
+    },
+    {
+      name: "Material-UI",
+      urlImage: "./../../Assets/img/logos/material.svg",
+    },
+    {
+      name: "Jest",
+      urlImage: "./../../Assets/img/logos/jest.png",
+    },
+    {
+      name: "GIT",
+      urlImage: "./../../Assets/img/logos/git.svg",
+    },
+  ],
+  projects: [
+    {
+      name: "DAH",
+      urlImage: "./../../Assets/img/logos/dha.png",
+      urlRepo: "https://github.com/andres0529/Drive-Away-Hunger.git",
+    },
+    {
+      name: "Georgian WIX",
+      urlImage: "./../../Assets/img/logos/georgianWix.png",
+      urlRepo: "https://github.com/andres0529/project2.git",
+    },
+    {
+      name: "RHBlood",
+      urlImage: "./../../Assets/img/logos/rh.png",
+      urlRepo: "https://github.com/andres0529/rhblood.git",
+    },
+  ],
   navbarMenu: [
     { name: "Home" },
     { name: "About" },
@@ -209,6 +272,7 @@ let m = {
             break;
 
           case "experience":
+            // variables for left part Experience
             let jobbtnsContainer = document.querySelector(".job-btns");
             let jobDescription = document.querySelector(".jobDescription p");
             let logoUrl = document.querySelector("figure img");
@@ -216,9 +280,16 @@ let m = {
             let jobDate = document.querySelector(".headings span");
             let jobTasks = document.querySelector(".jobDescription ul");
             let joinedTasks = "";
+            // variables for Right part Experience
+            let skillsContainer = document.querySelector(".skillsProjectsContainer .skills");
+            let projectsContainer = document.querySelector(".skillsProjectsContainer .projects");
+            let joinedSkills = "";
+            let joinedProjects = "";
 
-            //adding title
-            $("#experience h4").text(data.titles.page3)
+            /*----------------- populating information Left Side-------------------------  */
+
+            //adding titles
+            $("#experience h4").text(data.titles.page3);
 
             //****** Method to create P and take texts from DATAA (yhis method is called for every Click) ****/
             let addInfo = (button) => {
@@ -269,6 +340,37 @@ let m = {
               (task) => (joinedTasks += `<li class="mt-4">${task}</li>`)
             );
             jobTasks.innerHTML = joinedTasks;
+
+            /*----------------------- populating information Right Side -------------------------------- */
+
+            $(".skillsProjectsContainer .titleSkills").text("Skills");
+            $(".skillsProjectsContainer .titleProjects").text("Some Projects");
+              //populating skills side
+            data.skills.map((skill) => {
+              joinedSkills += `<div>
+                                    <figure>
+                                        <img src="${skill.urlImage}" alt="${skill.name}">
+                                    </figure>
+                                    <span>
+                                        ${skill.name}
+                                    </span>
+                                </div>`;
+            });
+            skillsContainer.innerHTML = joinedSkills;
+              //populating projects side
+            data.projects.map((project) => {
+              joinedProjects += `<div>
+                                  <figure>
+                                      <a href="${project.urlRepo}">
+                                          <img class="mt-2" src="${project.urlImage}"alt="${project.name}">
+                                      </a>
+                                  </figure>
+                                  <span>
+                                    ${project.name}
+                                  </span>
+                              </div>`;
+            });
+            projectsContainer.innerHTML = joinedProjects;
             break;
         }
       }
