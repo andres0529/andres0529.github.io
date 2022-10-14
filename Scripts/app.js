@@ -49,6 +49,7 @@ var data = {
     experiencePage: [
         {
             id: "conexcol",
+            logoUrl: "./../../Assets/img/logos/conexcol.png",
             companyName: "Conexcol Cloud",
             position: "Support Engineer",
             date: "Feb 2010 - Nov 2016",
@@ -62,19 +63,21 @@ var data = {
         },
         {
             id: "paradigma",
+            logoUrl: "./../../Assets/img/logos/paradigma.jfif",
             companyName: "Paradigma Solutions",
             position: "Web Developer",
             date: "Jul 2019 - Apr 2020",
             description: `Paradigma is a family of programmers dedicated to developing any type of software or web design that is required. Some of the tasks in which I had the opportunity to participate are:`,
             tasks: [
-                "Maintenance and deployment of DOT NET NUKE components for the Argos pages argos.co, grupoargos.com, honduras.argos.co and argos-us.com",
+                "Maintenance and deployment of DOT NET NUKE components for <a href='https://argos-us.com/'>Argos pages </a> in Colombia, Honduras, USA and Guyanna",
                 "Developed Single Page Apps (SPAs) using React Js, MaterialUI and ReactHooks.",
-                "I collaborated in the creation of React components for the web application of the Comptroller of Colombia https://www.contraloria.gov.co/es/web/guest/atencion-al-ciudadano/denuncias-y-otras-solicitudes-pqrd using Jest and Huskey as testing frameworks and Redux for application state management",
+                "I collaborated in the creation of React components for the web application of <a href='https://www.contraloria.gov.co/es/web/guest/atencion-al-ciudadano/denuncias-y-otras-solicitudes-pqrd'>Contraloria Genral de la Nacion</a> using Jest and Huskey as testing frameworks and Redux for application state management",
                 "developed some components in Angular CLI for the creation of the Kitchensink library, a library for internal use of the company for the development of applications",
             ],
         },
         {
             id: "globant",
+            logoUrl: "./../../Assets/img/logos/globant.jpg",
             companyName: "Globant",
             position: "Web UI Developer",
             date: "Dec 2020 - Nov 2021",
@@ -82,17 +85,18 @@ var data = {
             tasks: [
                 "I collaborated in the migration of 2 applications in AngularJS to ReactJS, using technologies such as Redux, Hooks, Typescript, Recharts and I was in the complete life cycle of the project.",
                 "Technologies such as StoryBookJS and Jest for unit tests were used for the development of each component, which allowed testing the components created before integration.",
-                "The client for which we developed the migration is American Century Investment https://www.americancentury.com/home/, with whom we had weekly meetings to show the progress of the project using the SCRUM methodology.",
+                "The client for which we developed the migration is <a href='https://www.americancentury.com/home/'>American Century Investment</a> , with whom we had weekly meetings to show the progress of the project using the SCRUM methodology.",
             ],
         },
         {
             id: "bdo",
+            logoUrl: "./../../Assets/img/logos/bdo.png",
             companyName: "BDO Canada",
             position: "Software and Web Developer, Intern",
             date: "May 2022 - Aug 2022",
             description: `BDO or Binder Dijker Otte is an international network of public accounting, tax, consulting and business advisory firms. Some of the tasks performed were:`,
             tasks: [
-                "To give back and support communities in need, BDO Canada annually launches the Drive Away Hunger campaign with a goal to donate 1 million meals to food banks across Canada. For fundraising, the DAH application was developed from its design to its deployment.",
+                "To give back and support communities in need, BDO Canada annually launches the <a href='https://www.bdo.ca/en-ca/about/people-values/drive-away-hunger/'>Drive Away Hunger</a> campaign with a goal to donate 1 million meals to food banks across Canada. For fundraising, the DAH application was developed from its design to its deployment.",
                 "Complete creation of the Drive Away Hunger application, which is based on ReactJS components, React Router, Hooks, API Context, Bootstrap, Material UI as FrontEnd and ASP.NET 6 and SQL for the BackEnd",
             ],
         },
@@ -180,6 +184,7 @@ let m = {
                 case "experience":
                     let jobbtnsContainer = document.querySelector(".job-btns");
                     let jobDescription = document.querySelector(".jobDescription p");
+                    let logoUrl = document.querySelector("figure img");
                     let companyName = document.querySelector(".headings h5 ");
                     let jobDate = document.querySelector(".headings span");
                     let jobTasks = document.querySelector(".jobDescription ul");
@@ -196,6 +201,7 @@ let m = {
                         jobDescription.textContent = jobSelected.description;
                         companyName.textContent = jobSelected.companyName;
                         jobDate.textContent = jobSelected.date;
+                        logoUrl.setAttribute("src", jobSelected.logoUrl);
                         //build the string with all the tasks together separated by P element each one
                         jobSelected.tasks.map((task) => {
                             joinedTasks += `<li class="mt-4">${task}</li>`;
@@ -215,13 +221,12 @@ let m = {
                     });
                     //***Load the informatrion by default first time in the page***
                     document.querySelector(".job-btns button").classList.add("activeButton");
+                    logoUrl.setAttribute("src", data.experiencePage[0].logoUrl);
                     companyName.textContent = data.experiencePage[0].companyName;
                     jobDescription.textContent = data.experiencePage[0].description;
                     jobDate.textContent = data.experiencePage[0].date;
                     data.experiencePage[0].tasks.map((task) => (joinedTasks += `<li class="mt-4">${task}</li>`));
                     jobTasks.innerHTML = joinedTasks;
-                    break;
-                default:
                     break;
             }
         });

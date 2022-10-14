@@ -296,11 +296,11 @@ header nav {
   color: #fff;
 }
 
-#about p a {
+#about p a, #experience li a {
   color: #00d6ff;
   text-decoration: none;
 }
-#about p a:hover {
+#about p a:hover, #experience li a:hover {
   color: #ee445f;
   transition: all ease 0.5s;
 }
@@ -335,7 +335,7 @@ header nav {
   transition: all linear 0.3s;
 }
 
-/* ************** Projects style **************/
+/* ************** Experience style **************/
 #experience {
   color: #fff;
 }
@@ -375,9 +375,24 @@ header nav {
   list-style: none;
 }
 
+#experience li:before {
+  content: "▹";
+  position: absolute;
+  margin-left: -40px;
+  color: #28dcffdb;
+  font-size: 25px;
+  line-height: 50px;
+}
+
 .activeButton {
   color: #ee445f !important;
   border-left: 3px solid !important;
+}
+
+
+#experience figure {
+  width: 50px;
+  margin-left: 3rem;
 }
 
 
@@ -443,7 +458,7 @@ Screen - Small (xs) - 480px or vertical 320px
     box-shadow: blue 0px 0px 5px 8px inset, rgb(52 60 64) 13px 9px 2px -4px,
       rgb(238 68 95) 13px 9px, rgb(52 60 64) 4px -15px 0px -3px;
   }
-  #about p {
+  #about p, #experience li {
     padding: 0px 10px;
   }
 
@@ -452,6 +467,14 @@ Screen - Small (xs) - 480px or vertical 320px
     padding-left: 35px;
     margin-left: -15px;
     overflow-x: auto;
+  }
+  #experience .job-info {
+    margin-top: 2rem !important;
+  }
+
+  #experience {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   #experience button {
