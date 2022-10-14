@@ -3,6 +3,13 @@
     OBJECT WITH DATA
 =============================================*/
 var data = {
+  titles: {
+    page1: "--",
+    page2: "About",
+    page3: "Experience and Skills",
+    page4: "",
+    page5: "",
+  },
   navbarMenu: [
     { name: "Home" },
     { name: "About" },
@@ -50,7 +57,7 @@ var data = {
   experiencePage: [
     {
       id: "conexcol",
-      logoUrl:"./../../Assets/img/logos/conexcol.png",
+      logoUrl: "./../../Assets/img/logos/conexcol.png",
       companyName: "Conexcol Cloud",
       position: "Support Engineer",
       date: "Feb 2010 - Nov 2016",
@@ -64,7 +71,7 @@ var data = {
     },
     {
       id: "paradigma",
-      logoUrl:"./../../Assets/img/logos/paradigma.jfif",
+      logoUrl: "./../../Assets/img/logos/paradigma.jfif",
       companyName: "Paradigma Solutions",
       position: "Web Developer",
       date: "Jul 2019 - Apr 2020",
@@ -78,7 +85,7 @@ var data = {
     },
     {
       id: "globant",
-      logoUrl:"./../../Assets/img/logos/globant.jpg",
+      logoUrl: "./../../Assets/img/logos/globant.jpg",
       companyName: "Globant",
       position: "Web UI Developer",
       date: "Dec 2020 - Nov 2021",
@@ -91,7 +98,7 @@ var data = {
     },
     {
       id: "bdo",
-      logoUrl:"./../../Assets/img/logos/bdo.png",
+      logoUrl: "./../../Assets/img/logos/bdo.png",
       companyName: "BDO Canada",
       position: "Software and Web Developer, Intern",
       date: "May 2022 - Aug 2022",
@@ -104,8 +111,6 @@ var data = {
     },
   ],
 };
-
-
 
 /*=============================================
     OBJECT WITH METHODS
@@ -184,7 +189,7 @@ let m = {
             break;
 
           case "about":
-            $("main #about h4").text(data.aboutPage.title);
+            $("main #about h4").text(data.titles.page2);
             $("main #about img").attr("src", data.aboutPage.urlImage);
 
             //loop the array with all the paragraphs
@@ -211,6 +216,9 @@ let m = {
             let jobDate = document.querySelector(".headings span");
             let jobTasks = document.querySelector(".jobDescription ul");
             let joinedTasks = "";
+
+            //adding title
+            $("#experience h4").text(data.titles.page3)
 
             //****** Method to create P and take texts from DATAA (yhis method is called for every Click) ****/
             let addInfo = (button) => {
@@ -250,12 +258,16 @@ let m = {
             });
 
             //***Load the informatrion by default first time in the page***
-            document.querySelector(".job-btns button").classList.add("activeButton");
+            document
+              .querySelector(".job-btns button")
+              .classList.add("activeButton");
             logoUrl.setAttribute("src", data.experiencePage[0].logoUrl);
             companyName.textContent = data.experiencePage[0].companyName;
             jobDescription.textContent = data.experiencePage[0].description;
             jobDate.textContent = data.experiencePage[0].date;
-            data.experiencePage[0].tasks.map((task) => (joinedTasks += `<li class="mt-4">${task}</li>`));
+            data.experiencePage[0].tasks.map(
+              (task) => (joinedTasks += `<li class="mt-4">${task}</li>`)
+            );
             jobTasks.innerHTML = joinedTasks;
             break;
         }

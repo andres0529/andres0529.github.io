@@ -3,6 +3,13 @@
     OBJECT WITH DATA
 =============================================*/
 var data = {
+    titles: {
+        page1: "--",
+        page2: "About",
+        page3: "Experience and Skills",
+        page4: "",
+        page5: "",
+    },
     navbarMenu: [
         { name: "Home" },
         { name: "About" },
@@ -166,7 +173,7 @@ let m = {
                     $("main #home h6").attr("data-text", data.homePage.text4); //attr needed for the effect
                     break;
                 case "about":
-                    $("main #about h4").text(data.aboutPage.title);
+                    $("main #about h4").text(data.titles.page2);
                     $("main #about img").attr("src", data.aboutPage.urlImage);
                     //loop the array with all the paragraphs
                     data.aboutPage.paragraphs.map((item) => {
@@ -189,6 +196,8 @@ let m = {
                     let jobDate = document.querySelector(".headings span");
                     let jobTasks = document.querySelector(".jobDescription ul");
                     let joinedTasks = "";
+                    //adding title
+                    $("#experience h4").text(data.titles.page3);
                     //****** Method to create P and take texts from DATAA (yhis method is called for every Click) ****/
                     let addInfo = (button) => {
                         //Match the job Id with the Button Id
@@ -220,7 +229,9 @@ let m = {
                         button.addEventListener("click", addInfo);
                     });
                     //***Load the informatrion by default first time in the page***
-                    document.querySelector(".job-btns button").classList.add("activeButton");
+                    document
+                        .querySelector(".job-btns button")
+                        .classList.add("activeButton");
                     logoUrl.setAttribute("src", data.experiencePage[0].logoUrl);
                     companyName.textContent = data.experiencePage[0].companyName;
                     jobDescription.textContent = data.experiencePage[0].description;

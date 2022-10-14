@@ -296,11 +296,13 @@ header nav {
   color: #fff;
 }
 
-#about p a, #experience li a {
+#about p a,
+#experience li a {
   color: #00d6ff;
   text-decoration: none;
 }
-#about p a:hover, #experience li a:hover {
+#about p a:hover,
+#experience li a:hover {
   color: #ee445f;
   transition: all ease 0.5s;
 }
@@ -389,13 +391,53 @@ header nav {
   border-left: 3px solid !important;
 }
 
-
-#experience figure {
+#experience .jobsContainer figure {
   width: 50px;
   margin-left: 3rem;
 }
 
+#experience .skillsContainer figure {
+  width: 50px;
+}
 
+#experience .skillsContainer .skills {
+  row-gap: 20px;
+}
+
+#experience .skillsContainer .skills div {
+  padding: 5px;
+  margin-right: 7px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#experience .skillsContainer .skills span {
+  color: #ffffffeb;
+  font-size: 12px;
+  font-family: "Lato";
+  letter-spacing: 0.5px;
+  font-weight: 300;
+  hyphens: auto;
+}
+
+.skillsContainer img {
+  width: 40px;
+  height: 40px;
+}
+
+.skillsContainer img:hover {
+  width: 30px;
+  height: 30px;
+  transition: all ease 0.3s;
+}
+
+#experience .skills-projects-bg {
+  background-color: #222b31;
+  padding: 15px;
+}
 /*====================================================================================================
 Screen - Small (xs) - 480px or vertical 320px
 ====================================================================================================*/
@@ -458,7 +500,8 @@ Screen - Small (xs) - 480px or vertical 320px
     box-shadow: blue 0px 0px 5px 8px inset, rgb(52 60 64) 13px 9px 2px -4px,
       rgb(238 68 95) 13px 9px, rgb(52 60 64) 4px -15px 0px -3px;
   }
-  #about p, #experience li {
+  #about p,
+  #experience li {
     padding: 0px 10px;
   }
 
@@ -491,4 +534,10 @@ Screen - Small (xs) - 480px or vertical 320px
     border-left: none !important;
     border-bottom: 3px solid !important;
   }
+
+  #experience .skillsContainer .skills {
+    justify-content: space-between;
+  }
+
+
 }
