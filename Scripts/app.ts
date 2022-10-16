@@ -618,9 +618,9 @@ let m = {
 
   // First method of using functions
   startApp: () => {
-    // m.loadLanding(); ////////////////////////////////////////------->descomentar
+    m.loadLanding(); ////////////////////////////////////////------->descomentar
 
-    // setTimeout(function () {////////////////////////////////////////------->descomentar
+    setTimeout(function () {////////////////////////////////////////------->descomentar
     // initial load
     document.title = "Home";
     // Change URL
@@ -629,7 +629,7 @@ let m = {
 
     m.loadHeader();
     // m.loadFooter();
-    // }, 10500); ////////////////////////////////////////------->descomentar
+    }, 10500); ////////////////////////////////////////------->descomentar
   },
 };
 
