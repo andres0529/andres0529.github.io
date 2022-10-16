@@ -681,8 +681,6 @@ textarea {
   background-color: transparent;
 }
 
-#contact button:hover {
-}
 
 .formSuccess {
   border: 1px solid #00d6ff !important;
@@ -730,6 +728,14 @@ Screen - Small (xs) - 480px or vertical 320px
 @media (max-width: 767px) {
   html {
     overflow-y: auto;
+  }
+
+  header nav ul{
+    margin-top: 1rem;
+  }
+
+  header nav ul li{
+    padding: 5px 0px;
   }
 
   #about,
@@ -847,3 +853,12 @@ Screen - Small (xs) - 480px or vertical 320px
     z-index: -2;
   }
 }
+
+@media(max-width:991px) and (min-width:768px){
+  html{
+    overflow-y: scroll;
+  }
+}
+
+
+

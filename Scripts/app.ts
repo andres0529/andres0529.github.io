@@ -277,6 +277,8 @@ let m = {
           $(this).removeClass("active");
         });
 
+        
+
         // Activate the current Link
         $("li>a#" + document.title).addClass("active");
 
@@ -287,6 +289,12 @@ let m = {
 
   //----------method to load the conten on main
   loadContent: () => {
+    // closed the navbar on Mobile after a click
+    $("header nav button").addClass("collapsed")
+    $("header .container>div").removeClass("show")
+
+
+
     let contentLink = document.title.toLowerCase();
     $.get(
       "./Views/content/" + contentLink + ".html",
@@ -340,7 +348,7 @@ let m = {
               "click",
               () =>
                 (location.href =
-                  "https://www.dropbox.com/s/at3djtjixix6lzk/AndresCorrea_Resume%20August-2022.pdf?dl=0")
+                  "https://www.dropbox.com/s/gh5ksho3u0cn9d9/Resume-AndresCorrea-Oct-2022.pdf?dl=0")
             );
 
             break;
@@ -618,9 +626,9 @@ let m = {
 
   // First method of using functions
   startApp: () => {
-    m.loadLanding(); ////////////////////////////////////////------->descomentar
+    m.loadLanding(); ////////////////////////////////////////------->
 
-    setTimeout(function () {////////////////////////////////////////------->descomentar
+    setTimeout(function () {////////////////////////////////////////------->
     // initial load
     document.title = "Home";
     // Change URL
@@ -629,7 +637,7 @@ let m = {
 
     m.loadHeader();
     // m.loadFooter();
-    }, 10500); ////////////////////////////////////////------->descomentar
+    }, 10500); ////////////////////////////////////////------->
   },
 };
 

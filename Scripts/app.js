@@ -272,6 +272,9 @@ let m = {
     },
     //----------method to load the conten on main
     loadContent: () => {
+        // closed the navbar on Mobile after a click
+        $("header nav button").addClass("collapsed");
+        $("header .container>div").removeClass("show");
         let contentLink = document.title.toLowerCase();
         $.get("./Views/content/" + contentLink + ".html", function (html_data) {
             //append the view to the main tag
@@ -311,7 +314,7 @@ let m = {
                     //add the button to the container paragraph
                     $("main #about .paragraphs").append(buttonResume);
                     $("main #about button").on("click", () => (location.href =
-                        "https://www.dropbox.com/s/at3djtjixix6lzk/AndresCorrea_Resume%20August-2022.pdf?dl=0"));
+                        "https://www.dropbox.com/s/gh5ksho3u0cn9d9/Resume-AndresCorrea-Oct-2022.pdf?dl=0"));
                     break;
                 case "experience":
                     // variables for left part Experience
@@ -537,7 +540,7 @@ let m = {
     //----------method to load the footer
     // First method of using functions
     startApp: () => {
-        m.loadLanding(); ////////////////////////////////////////------->descomentar
+        m.loadLanding(); ////////////////////////////////////////------->
         setTimeout(function () {
             // initial load
             document.title = "Home";
@@ -546,7 +549,7 @@ let m = {
             m.loadContent();
             m.loadHeader();
             // m.loadFooter();
-        }, 10500); ////////////////////////////////////////------->descomentar
+        }, 10500); ////////////////////////////////////////------->
     },
 };
 window.addEventListener("load", m.startApp);
