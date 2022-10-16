@@ -1,3 +1,11 @@
+/*
+file name: app.css
+Author: Andres Correa Moreno
+website name: My Portfolio
+
+Dscription: File where is all the style for the page
+*/
+
 /* ************** General style **************/
 body {
   background-color: #192226e0;
@@ -32,6 +40,7 @@ h2,
 h3,
 h4,
 h5,
+label,
 span {
   font-family: "Lato";
   letter-spacing: 0.2px;
@@ -91,6 +100,11 @@ header nav {
   text-transform: uppercase;
   letter-spacing: 2px;
   min-height: 8vh;
+}
+
+header nav figure {
+  width: 80px;
+  height: 15px;
 }
 
 /* ************** Home style **************/
@@ -600,7 +614,6 @@ header nav {
 }
 
 #services .rightServices .service {
-
   height: 100px;
   display: flex;
   justify-content: center;
@@ -608,30 +621,108 @@ header nav {
   padding: 20px;
 }
 
-/* #services .card i, #services .card-body, #services .card-body p{
-  color: #343c40;
+/* ************** Contact style **************/
+#contact {
+  color: #fff;
 }
 
+#contact-background {
+  /* background-image: url(./../Assets/img/bgContact.jpg);
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position-x: initial;
+  background-position-y: center; */
 
-#services .card {
-  background-color: #28dcffdb;
-  width: 250px;
-  text-align: center;
+  background: radial-gradient(
+    circle,
+    rgba(3, 7, 8, 1) 0%,
+    rgba(13, 77, 90, 1) 100%,
+    rgba(23, 145, 169, 1) 100%,
+    rgba(52, 60, 64, 1) 100%
+  );
+  width: 100%;
+  height: 100%;
 }
 
-#services .card i {
- 
-  font-size: 30px;
-  text-align: center;
-  padding-bottom: 5px;
-  padding-top: 20px;
+#contact form {
+  width: 500px;
+
+  padding: 50px;
+  background-color: #00000059;
+  border-radius: 20px;
+  resize: none !important;
 }
 
+#contact form input,
+form textarea {
+  color: #fff !important;
+  border: 1px solid #4b848f;
+  background-color: transparent !important;
+}
 
-#services .card .card-body h4 {
-  letter-spacing: 0.8px;
+textarea {
+  border: 1px solid #4b848f !important;
+}
+
+#contact form h4 {
+  font-weight: 600;
+}
+
+#contact button {
+  width: 200px;
+  align-self: center;
+  font-size: 14px;
+  font-family: "Lato";
   font-weight: 300;
-} */
+  letter-spacing: 1px;
+  color: #00d6ff;
+  border-color: #00d6ff;
+  background-color: transparent;
+}
+
+#contact button:hover {
+}
+
+.formSuccess {
+  border: 1px solid #00d6ff !important;
+}
+
+.formWrong {
+  border: 1px solid #ee445f !important;
+}
+
+#contact .hiddenSuccess {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  
+}
+
+#contact .hiddenSuccess > div {
+  color: #00d5ff;
+  border-radius: 12px;
+  width: 300px;
+  height: 300px;
+  background-color: #222b31;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgb(0 0 0 / 17%) 0px -23px 25px 0px inset, rgb(0 0 0 / 15%) 0px -36px 30px 0px inset, rgb(0 0 0 / 10%) 0px -79px 40px 0px inset, rgb(0 0 0 / 6%) 0px 2px 1px, rgb(0 0 0 / 9%) 0px 4px 2px, rgb(0 0 0 / 9%) 0px 8px 4px, rgb(0 0 0 / 9%) 0px 16px 8px, rgb(0 0 0 / 9%) 0px 32px 16px;
+}
+
+.opacityWrong{
+  z-index: -1;
+  opacity: 0;
+}
+.opacitySuccess{
+  opacity: 1 !important;
+  z-index: 1 !important;
+  transition: all ease-in 0.5s;
+}
+
 
 /*====================================================================================================
 Screen - Small (xs) - 480px or vertical 320px

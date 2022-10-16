@@ -1,3 +1,11 @@
+/*
+file name: app.ts
+Author: Andres Correa Moreno
+website name: My Portfolio
+
+Dscription: File where is all the logic for the page
+*/
+
 "use strict";
 /*=============================================
     OBJECT WITH DATA
@@ -8,7 +16,7 @@ var data = {
     page2: "About",
     page3: "Experience and Skills",
     page4: "Services",
-    page5: "",
+    page5: "Get In Touch!",
   },
   skills: [
     {
@@ -80,6 +88,11 @@ var data = {
     { name: "Services" },
     { name: "Contact" },
   ],
+  landingPage: {
+    text1: "Welcome to my site",
+    text2: "Fresh Constructor, ",
+    text3: "Original Programmer",
+  },
   homePage: {
     text1: "Hi there! ",
     text2: "I'm Andres Correa",
@@ -200,6 +213,13 @@ var data = {
       serviceInfo: "SEO Marketing",
     },
   ],
+  contactPage: {
+    heading: "How can I help you?",
+    name: "Name",
+    email: "Email @",
+    message: "What's Up!",
+    button: "send",
+  },
 };
 
 /*=============================================
@@ -211,6 +231,11 @@ let m = {
     //Call the landing page as default page at the beggining of the app
     $.get("./Views/content/landing.html", function (landing_page) {
       $("main").html(landing_page);
+
+      // Populating the fields
+      $("#landingPage h1").text(data.landingPage.text1);
+      $("#landingPage .span1").text(data.landingPage.text2);
+      $("#landingPage .span2").text(data.landingPage.text3);
     });
 
     //After 8S the first animation is stoped and removed ther opacity from the logo
@@ -322,12 +347,20 @@ let m = {
 
           case "experience":
             // variables for left part Experience
-            let jobbtnsContainer = document.querySelector(".job-btns");
-            let jobDescription = document.querySelector(".jobDescription p");
-            let logoUrl = document.querySelector("figure img");
-            let companyName = document.querySelector(".headings h5 ");
-            let jobDate = document.querySelector(".headings span");
-            let jobTasks = document.querySelector(".jobDescription ul");
+            let jobbtnsContainer = document.querySelector(
+              "#experience .job-btns"
+            );
+            let jobDescription = document.querySelector(
+              "#experience .jobDescription p"
+            );
+            let logoUrl = document.querySelector("#experience figure img");
+            let companyName = document.querySelector(
+              "#experience .headings h5 "
+            );
+            let jobDate = document.querySelector("#experience .headings span");
+            let jobTasks = document.querySelector(
+              "#experience .jobDescription ul"
+            );
             let joinedTasks = "";
             // variables for Right part Experience
             let skillsContainer = document.querySelector(
@@ -471,6 +504,111 @@ let m = {
             $("#services .rightServices").html(joinedRightServices);
 
             break;
+          case "contact":
+            $("#contact h4").text(data.titles.page5);
+            $("#contact h3").text(data.contactPage.heading);
+            $("#contact .name").text(data.contactPage.name);
+            $("#contact #name").attr(
+              "placeholder",
+              `Type here your ${data.contactPage.name}`
+            );
+            $("#contact .email").text(data.contactPage.email);
+            $("#contact .message").text(data.contactPage.message);
+            $("#contact button").html(
+              `${data.contactPage.button}  <i class="fa-regular fa-paper-plane"></i>`
+            );
+
+            let formValidation = {
+              name: false,
+              email: false,
+              message: false,
+            };
+
+            //this fuynction is called for each change to verify the button
+            const validateButton = () => {
+              if (
+                formValidation.message &&
+                formValidation.message &&
+                formValidation.name
+              ) {
+                $("#contact button").removeAttr("disabled");
+              } else {
+                $("#contact button").attr("disabled", "true");
+              }
+            };
+
+            // function to validate name field
+            $("#contact #name").on("change", (e: Event) => {
+              const { target } = e;
+              if ((target as HTMLButtonElement).value === "") {
+                $("#contact #name").removeClass("formSuccess");
+                $("#contact #name").addClass("formWrong");
+                formValidation = { ...formValidation, name: false };
+              } else {
+                $("#contact #name").removeClass("formWrong");
+                $("#contact #name").addClass("formSuccess");
+                formValidation = { ...formValidation, name: true };
+              }
+              validateButton();
+              console.log(formValidation);
+            });
+
+            // function to validate email field
+            let regExpressEmail =
+              /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            $("#contact #email").on("change", (e: Event) => {
+              const { target } = e;
+              // If the regular expression is false
+              if (!regExpressEmail.test((target as HTMLButtonElement).value)) {
+                $("#contact #email").removeClass("formSuccess");
+                $("#contact #email").addClass("formWrong");
+                formValidation = { ...formValidation, email: false };
+              } else {
+                $("#contact #email").removeClass("formWrong");
+                $("#contact #email").addClass("formSuccess");
+                formValidation = { ...formValidation, email: true };
+              }
+              validateButton();
+            });
+
+            // function to validate Message field
+            $("#contact #message").on("change", (e: Event) => {
+              const { target } = e;
+              if ((target as HTMLButtonElement).value === "") {
+                $("#contact #message").removeClass("formSuccess");
+                $("#contact #message").addClass("formWrong");
+                formValidation = { ...formValidation, message: false };
+              } else {
+                $("#contact #message").removeClass("formWrong");
+                $("#contact #message").addClass("formSuccess");
+                formValidation = { ...formValidation, message: true };
+              }
+              validateButton();
+            });
+
+            //function to listener the click o the send buttton
+            $("#contact button").on("click", (event) => {
+              event.preventDefault();
+              if (
+                formValidation.message &&
+                formValidation.message &&
+                formValidation.name
+              ) {
+                //remove the opacity for the success messsage
+                $("#contact .hiddenSuccess").removeClass("opacityWrong");
+                $("#contact .hiddenSuccess").addClass("opacitySuccess");
+
+                setTimeout(function () {
+                  document.title = "About";
+                  window.history.pushState({}, "", "About");
+                  // Activate the Home Link on initial load
+                  $("li>a#Home").removeClass("active");
+                  $("li>a#About").addClass("active");
+                  m.loadContent();
+                }, 2000);
+              }
+            });
+            break;
         }
       }
     );
@@ -482,7 +620,7 @@ let m = {
   startApp: () => {
     // m.loadLanding(); ////////////////////////////////////////------->descomentar
 
-    // setTimeout(function () { ////////////////////////////////////////------->descomentar
+    // setTimeout(function () {////////////////////////////////////////------->descomentar
     // initial load
     document.title = "Home";
     // Change URL
