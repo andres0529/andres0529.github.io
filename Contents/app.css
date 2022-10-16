@@ -27,6 +27,15 @@ p {
   font-weight: 300;
   hyphens: auto;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+span {
+  font-family: "Lato";
+  letter-spacing: 0.2px;
+}
 
 /* ************** Landing style **************/
 
@@ -144,6 +153,8 @@ header nav {
   clip: rect(0, 900px, 0, 0);
   animation: noise-anim 2s infinit7e linear alternate-reverse;
 }
+
+/* The next effect was taken from https://codepen.io/melzshawn1998/pen/xxdwORB and cutomized by me  */
 
 #home .glitch:before {
   content: attr(data-text);
@@ -290,51 +301,50 @@ header nav {
   }
 }
 
-
 #home .btnMore {
-	color: #FFF;
-	transition: all 0.3s;
-	position: relative;
+  color: #fff;
+  transition: all 0.3s;
+  position: relative;
   line-height: 50px;
-	height: 50px;
-	text-align: center;
-	width: 250px;
-	cursor: pointer;
+  height: 50px;
+  text-align: center;
+  width: 250px;
+  cursor: pointer;
 }
 #home .btnMore span {
-	transition: all 0.3s;
+  transition: all 0.3s;
   color: #00d6ff;
-  font-family: 'Lato';
+  font-family: "Lato";
   letter-spacing: 0.5px;
 }
 #home .btnMore::before {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	opacity: 0;
-	transition: all 0.3s;
-	border-top-width: 1px;
-	border-bottom-width: 1px;
-	border-top-style: solid;
-	border-bottom-style: solid;
-	border-top-color: rgba(255,255,255,0.5);
-	border-bottom-color: rgba(255,255,255,0.5);
-	transform: scale(0.1, 1);
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+  transform: scale(0.1, 1);
 }
 #home .btnMore:hover span {
-	letter-spacing: 2px;
-  color:#ee445f ;
+  letter-spacing: 2px;
+  color: #ee445f;
 }
 #home .btnMore:hover::before {
-	opacity: 1;	
-	transform: scale(1, 1);	
+  opacity: 1;
+  transform: scale(1, 1);
 }
 #home .btnMore::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -345,12 +355,9 @@ header nav {
   background-color: rgb(0 214 255 / 23%);
 }
 #home .btnMore:hover::after {
-	opacity: 0;	
-	transform: scale(0.1, 1);
-  
+  opacity: 0;
+  transform: scale(0.1, 1);
 }
-
-
 
 /* ************** About style **************/
 
@@ -463,14 +470,12 @@ header nav {
 }
 
 #experience .skillsProjectsContainer .skills,
-#experience .skillsProjectsContainer .projects
-{
+#experience .skillsProjectsContainer .projects {
   row-gap: 20px;
 }
 
 #experience .skillsProjectsContainer .skills div,
-#experience .skillsProjectsContainer .projects div 
-{
+#experience .skillsProjectsContainer .projects div {
   padding: 5px;
   margin-right: 7px;
   text-align: center;
@@ -481,8 +486,7 @@ header nav {
 }
 
 #experience .skillsProjectsContainer .skills span,
-#experience .skillsProjectsContainer .projects span 
-{
+#experience .skillsProjectsContainer .projects span {
   color: #ffffffeb;
   font-size: 12px;
   font-family: "Lato";
@@ -496,7 +500,11 @@ header nav {
   height: 40px;
 }
 
-#experience .skills-projects-bg div:first-child.skillsProjectsContainer div:nth-child(3) img {
+#experience
+  .skills-projects-bg
+  div:first-child.skillsProjectsContainer
+  div:nth-child(3)
+  img {
   -webkit-animation: spin 2s linear infinite;
   animation: spinReact 3s linear infinite;
 }
@@ -504,7 +512,8 @@ header nav {
 #experience .skills-projects-bg {
   background-color: #222b31;
   padding: 15px;
-  box-shadow: #222b31 24px 38px 0px 0px inset, rgb(52 60 64) 42px 36px 0px -23px, rgb(0 214 255) 41px 35px 0px -16px, rgb(52 60 64) 0px 28px 0px -8px
+  box-shadow: #222b31 24px 38px 0px 0px inset, rgb(52 60 64) 42px 36px 0px -23px,
+    rgb(0 214 255) 41px 35px 0px -16px, rgb(52 60 64) 0px 28px 0px -8px;
 }
 
 @-webkit-keyframes spinReact {
@@ -523,6 +532,106 @@ header nav {
     transform: rotate(360deg);
   }
 }
+
+/* ************** Services style **************/
+
+#services {
+  color: #fff;
+}
+
+#services img {
+  width: 21vh;
+}
+
+#services figure {
+  text-align: center;
+}
+
+#services .service i {
+  font-size: 20px;
+}
+
+/* red background Left */
+.leftBackgroundRed {
+  background: linear-gradient(
+    144deg,
+    rgb(238 68 95) 77%,
+    rgba(52, 60, 64, 1) 77%
+  );
+}
+/* blue background Left */
+.leftBackgroundBlue {
+  background: linear-gradient(
+    144deg,
+    rgb(23 115 135) 77%,
+    rgba(52, 60, 64, 1) 77%
+  );
+}
+
+/* red background Right */
+.rightBackgroundRed {
+  background: linear-gradient(
+    215deg,
+    rgb(238 68 95) 77%,
+    rgba(52, 60, 64, 1) 77%
+  );
+}
+
+/* blue background Right */
+.rightBackgroundBlue {
+  background: linear-gradient(
+    215deg,
+    rgb(23 115 135) 77%,
+    rgba(52, 60, 64, 1) 77%
+  );
+}
+
+#services .leftServices .service {
+  height: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+}
+
+#services .leftServices h5,
+#services .rightServices h5 {
+  margin-left: 15px;
+}
+
+#services .rightServices .service {
+
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* #services .card i, #services .card-body, #services .card-body p{
+  color: #343c40;
+}
+
+
+#services .card {
+  background-color: #28dcffdb;
+  width: 250px;
+  text-align: center;
+}
+
+#services .card i {
+ 
+  font-size: 30px;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-top: 20px;
+}
+
+
+#services .card .card-body h4 {
+  letter-spacing: 0.8px;
+  font-weight: 300;
+} */
 
 /*====================================================================================================
 Screen - Small (xs) - 480px or vertical 320px
@@ -621,13 +730,29 @@ Screen - Small (xs) - 480px or vertical 320px
     border-bottom: 3px solid !important;
   }
 
-  #experience .skillsProjectsContainer .skills, 
-  #experience .skillsProjectsContainer .projects
-  {
+  #experience .skillsProjectsContainer .skills,
+  #experience .skillsProjectsContainer .projects {
     justify-content: space-between;
   }
 
-  #experience .skills-projects-bg{
+  #experience .skills-projects-bg {
     box-shadow: none;
+  }
+
+  #services .leftServices .service,
+  #services .rightServices .service {
+    background: rgb(23 115 135);
+    margin-top: 1rem;
+  }
+
+  #services > div {
+    justify-content: center;
+  }
+
+  #services figure {
+    position: absolute;
+    width: 87%;
+    top: 30vh;
+    z-index: -2;
   }
 }

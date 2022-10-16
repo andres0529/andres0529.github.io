@@ -7,7 +7,7 @@ var data = {
     page1: "--",
     page2: "About",
     page3: "Experience and Skills",
-    page4: "",
+    page4: "Services",
     page5: "",
   },
   skills: [
@@ -174,6 +174,32 @@ var data = {
       ],
     },
   ],
+  servicesPage: [
+    {
+      serviceIcon: `<i class="fa-solid fa-code"></i>`,
+      serviceInfo: "Web Application Development",
+    },
+    {
+      serviceIcon: `<i class="fa-brands fa-sketch"></i>`,
+      serviceInfo: "Web and Apps Design",
+    },
+    {
+      serviceIcon: `<i class="fa-solid fa-vial-circle-check"></i>`,
+      serviceInfo: "Quality Assurance",
+    },
+    {
+      serviceIcon: `<i class="fa-solid fa-terminal"></i>`,
+      serviceInfo: "General Programming",
+    },
+    {
+      serviceIcon: `<i class="fa-solid fa-laptop-code"></i>`,
+      serviceInfo: "Custom Development",
+    },
+    {
+      serviceIcon: `<i class="fa-solid fa-magnifying-glass-chart"></i>`,
+      serviceInfo: "SEO Marketing",
+    },
+  ],
 };
 
 /*=============================================
@@ -285,8 +311,12 @@ let m = {
             //add the button to the container paragraph
             $("main #about .paragraphs").append(buttonResume);
 
-            $("main #about button").on("click", ()=> location.href ="https://www.dropbox.com/s/at3djtjixix6lzk/AndresCorrea_Resume%20August-2022.pdf?dl=0")
-
+            $("main #about button").on(
+              "click",
+              () =>
+                (location.href =
+                  "https://www.dropbox.com/s/at3djtjixix6lzk/AndresCorrea_Resume%20August-2022.pdf?dl=0")
+            );
 
             break;
 
@@ -394,6 +424,52 @@ let m = {
                               </div>`;
             });
             projectsContainer.innerHTML = joinedProjects;
+            break;
+
+          case "services":
+            let joinedRightServices = "";
+            let joinedLeftServices = "";
+            //variable to calculate the begginis of the right column
+            let rightColumnStart = Math.round(data.servicesPage.length / 2);
+
+            data.servicesPage.map((service, index) => {
+              // Populating the variable with right side services
+              if (index + 1 > rightColumnStart) {
+                //if indes is odd, apply red color, ekse apply blue color
+                joinedRightServices += `
+                                        <div class="service ${
+                                          index % 2 == 0
+                                            ? "rightBackgroundRed"
+                                            : "rightBackgroundBlue"
+                                        }">
+                                          <div class="serviceInfo d-flex align-items-baseline">
+                                              ${service.serviceIcon}
+                                            <h5>${service.serviceInfo}</h5> 
+                                          </div>
+                                        </div>
+                                       `;
+              } else {
+                // Populating the variable with left side services
+                //if indes is odd, apply red color, ekse apply blue color
+                joinedLeftServices += `
+                                      <div class="service ${
+                                        index % 2 == 0
+                                          ? "leftBackgroundRed"
+                                          : "leftBackgroundBlue"
+                                      }">
+                                        <div class="serviceInfo d-flex align-items-baseline">
+                                        ${service.serviceIcon}
+                                          <h5>${service.serviceInfo}</h5> 
+                                        </div>
+                                      </div>
+                                     `;
+              }
+            });
+
+            $("#services h4").text(data.titles.page4);
+            $("#services .leftServices").html(joinedLeftServices);
+            $("#services .rightServices").html(joinedRightServices);
+
             break;
         }
       }
